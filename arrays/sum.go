@@ -20,3 +20,17 @@ func SumAll(numbersToSum ...[]int) (sums []int) {
 	}
 	return
 }
+
+/*
+SumAllTails - SumAll of non-Head numbers in multiple slices
+*/
+func SumAllTails(numbersToSum ...[]int) (sums []int) {
+	for _, numbers := range numbersToSum {
+		if len(numbers) == 0 {
+			sums = append(sums, 0)
+		} else {
+			sums = append(sums, Sum(numbers[1:]))
+		}
+	}
+	return
+}
