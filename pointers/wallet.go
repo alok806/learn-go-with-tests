@@ -1,6 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
+
+/*
+ErrInsufficientFunds - Insufficient Funds error message
+*/
+var ErrInsufficientFunds = "cannot withdraw, insufficient funds"
 
 /*
 Stringer for Bitcoin
@@ -45,6 +53,10 @@ func (w *Wallet) Balance() Bitcoin {
 /*
 Withdraw from wallet
 */
-func (w *Wallet) Withdraw(amount Bitcoin) {
+func (w *Wallet) Withdraw(amount Bitcoin) error {
+	if amount > w.balance {
+		return errors.New(ErrInsufficientFunds)
+	}
 	w.balance -= amount
+	return nil
 }
