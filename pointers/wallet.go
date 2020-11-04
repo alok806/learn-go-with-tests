@@ -41,3 +41,10 @@ Balance check for wallet
 func (w *Wallet) Balance() Bitcoin {
 	return w.balance
 }
+
+/*
+Withdraw from wallet
+*/
+func (w *Wallet) Withdraw(amount Bitcoin) {
+	w.balance -= amount
+}
