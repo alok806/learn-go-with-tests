@@ -24,3 +24,10 @@ func (d Dictionary) Search(word string) (string, error) {
 	}
 	return definition, nil
 }
+
+/*
+Add method for Dictionary
+*/
+func (d Dictionary) Add(word, definition string) {
+	d[word] = definition
+}
